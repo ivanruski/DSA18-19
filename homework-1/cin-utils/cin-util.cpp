@@ -5,11 +5,12 @@
 using std::vector;
 using std::cin;
 
+extern int buff_size;
 namespace cinutils {
     int parse_next_input_line(vector<int> &time) {
-        char buff[20];
+        char buff[buff_size];
         
-        if (!cin.getline(buff,20)) 
+        if (!cin.getline(buff,buff_size)) 
             return 1; //whole input is read
         
         int i = 0;

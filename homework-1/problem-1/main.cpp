@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
-#include "./cin-utils/cin-util.h"
+#include "../cin-utils/cin-util.h"
+int buff_size = 1048576;
 
 int main(int argc, char *argv[])
 {
