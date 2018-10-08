@@ -31,4 +31,19 @@ namespace cinutils {
         
         return 0;
     }
+
+    int parse_next_input_line(vector<char> &result) {
+        char buff[buff_size];
+        
+        if (!cin.getline(buff,buff_size)) 
+            return 1; //whole input is read
+        
+        int i = 0;
+        while (buff[i] != '\0') {
+            result.push_back(buff[i]);
+            i++;
+        }
+        
+        return 0;
+    }
 }
