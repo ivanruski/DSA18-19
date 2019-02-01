@@ -2,5 +2,6 @@
     "editor.minimap.enabled": false,
     "files.associations": {
         "ostream": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }

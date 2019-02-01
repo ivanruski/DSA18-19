@@ -2,7 +2,7 @@
 
 template <class T>
 class llist {
-private:
+public:
     struct node {
         T data;
         node* next;
@@ -25,16 +25,24 @@ public:
     void print();
     void push_front(T data);
     void push_last(T data);
+    void remove(T data);
 
-    
+    bool exist(T data);
+    bool empty();
+
+    //    node* get_head();
 };
 
-//public
 
 template <class T>
 llist<T>::llist() {
     this->init();
 }
+
+/* template <class T> */
+/* llist<T>::node* llist<T>::get_head() { */
+/*     return this->head; */
+/* } */
 
 template <class T>
 void llist<T>::print() {
@@ -72,6 +80,46 @@ void llist<T>::push_last(T data) {
         this->tail->next = _new;
         this->tail = _new;
     }
+
+    this->size += 1;
+}
+
+template <class T>
+bool llist<T>::empty() {
+    return this->size == 0;
+}
+
+template <class T>
+void llist<T>::remove(T data) {
+    node *prev = nullptr;
+    node *curr = this->head;
+    while (curr != nullptr && curr->data != data) {
+	prev = curr;
+	curr = curr->next;
+    }
+
+    if (curr == nullptr)
+	return;
+
+    if (curr == this->head)
+	this->head = curr->next;
+    else if (curr == this->tail)
+	this->tail = prev;
+    else
+	prev->next = curr->next;
+
+    this->size -= 1;
+    delete curr;
+}
+
+template <class T>
+bool llist<T>::exist(T data) {
+    node *curr = this->head;
+    while (curr != nullptr && curr->data != data) {
+	curr = curr->next;
+    }
+
+    return curr != nullptr && curr->data == data;
 }
 
 template <class T>
